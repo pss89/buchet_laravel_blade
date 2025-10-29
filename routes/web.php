@@ -1,12 +1,17 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CrudController;
+
 use Illuminate\Support\Facades\Route;
 
 // 사용자 페이지
 Route::get('/', function () {
     return view('welcome');
 });
+
+// CRUD 페이지
+Route::get('/crud', [CrudController::class, 'index'])->name('crud.index');
 
 // admin 
 Route::group(['prefix' => 'admin'], function () {
