@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Crud Test')
+@section('title', 'Main')
 
 @section('content')
 <div class="md:container m-auto h-screen text-center content-center">
-    Crud index 본문 내용
+    main 본문 내용
 </div>
 @endsection

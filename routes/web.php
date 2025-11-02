@@ -2,13 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CrudController;
+use App\Http\Controllers\MainController;
 
 use Illuminate\Support\Facades\Route;
 
 // 사용자 페이지
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [MainController::class, 'index'])->name('index');
 
 // CRUD 페이지
 Route::get('/crud', [CrudController::class, 'index'])->name('crud.index');
