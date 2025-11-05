@@ -17,4 +17,10 @@ class CrudModel extends Model
         'subject',
         'content',
     ];
+
+    // user_id 를 이용해서 users의 name 을 가져오는 관계 설정
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MainController::class, 'index'])->name('index');
 
 // CRUD 페이지
-Route::get('/crud', [CrudController::class, 'index'])->name('crud.index');
+// Route::get('/crud', [CrudController::class, 'index'])->name('crud.index');
+// crud를 그룹으로
+Route::group(['prefix' => 'crud'], function () {
+    Route::get('/', [CrudController::class, 'index'])->name('crud.index');
+    
+    // 글 작성,수정 페이지 (동시에)
+    Route::get('/form/{id?}', [CrudController::class, 'form'])->name('crud.form');
+});
 
 // admin 
 Route::group(['prefix' => 'admin'], function () {
