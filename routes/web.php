@@ -26,6 +26,10 @@ Route::group(['prefix' => 'crud'], function () {
     Route::patch('/update/{id}', [CrudController::class, 'update'])->name('crud.update');
 });
 
+Route::get('/test', function () {
+    return view('test');
+});
+
 // admin 
 Route::group(['prefix' => 'admin'], function () {
     // admin/dashboard 경로
