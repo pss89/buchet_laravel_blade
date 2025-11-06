@@ -20,6 +20,10 @@ Route::group(['prefix' => 'crud'], function () {
     
     // 글 작성,수정 페이지 (동시에)
     Route::get('/form/{id?}', [CrudController::class, 'form'])->name('crud.form');
+
+    // 저장, 수정
+    Route::post('/store', [CrudController::class, 'store'])->name('crud.store');
+    Route::patch('/update/{id}', [CrudController::class, 'update'])->name('crud.update');
 });
 
 // admin 
