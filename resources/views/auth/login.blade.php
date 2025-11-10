@@ -2,8 +2,12 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    {{-- redirectTo 같이 넘기기 --}}
     <form method="POST" action="{{ route('login') }}">
         @csrf
+        @if (request()->has('redirectTo'))
+            <input type="hidden" name="redirectTo" value="{{ request()->input('redirectTo') }}">
+        @endif
 
         <!-- Email Address -->
         <div>

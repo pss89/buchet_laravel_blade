@@ -28,7 +28,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // redirectTo가 있는 경우 해당 URL로 리다이렉트
+        if ($request->has('redirectTo')) {
+            return redirect()->intended($request->input('redirectTo'));
+        } else {
+            return redirect()->intended('/dashboard');
+        }
     }
 
     /**

@@ -47,8 +47,8 @@
                     name="subject"
                     id="subject"
                     class="block w-full rounded-xl border border-slate-600 px-4 py-3 text-sm
-                           placeholder:text-slate-500
-                           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder:text-slate-500 focus:outline-none focus:ring-2 
+                        focus:ring-indigo-500 focus:border-indigo-500"
                     placeholder="제목을 입력하세요"
                     value="{{ old('subject', $data->subject ?? '') }}"
                 >
@@ -64,8 +64,8 @@
                     id="content"
                     rows="8"
                     class="block w-full min-h-[220px] rounded-xl border border-slate-600 px-4 py-3 text-sm
-                           leading-relaxed placeholder:text-slate-500
-                           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                        leading-relaxed placeholder:text-slate-500
+                        focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                     placeholder="내용을 입력하세요"
                 >{{ old('content', $data->content ?? '') }}</textarea>
             </div>
@@ -73,9 +73,10 @@
             {{-- 버튼 영역 --}}
             <div class="mt-8 flex justify-end gap-3">
                 <a
-                    href="{{ route('crud.index') }}"
+                    {{-- href="{{ route('crud.index') }}" --}}
+                    href="{{ route('crud.index', request()->only(['q', 'per', 'page'])) }}"
                     class="inline-flex items-center rounded-xl border border-slate-600 px-4 py-2 text-sm font-medium
-                           hover:bg-slate-800"
+                        hover:bg-slate-800"
                 >
                     목록으로
                 </a>
@@ -83,7 +84,7 @@
                 <button
                     type="submit"
                     class="inline-flex items-center rounded-xl border border-slate-600 px-4 py-2 text-sm font-medium
-                           bg-slate-500 hover:bg-slate-800"
+                        bg-slate-500 hover:bg-slate-800"
                 >
                     {{ isset($data) ? '수정' : '등록' }}
                 </button>

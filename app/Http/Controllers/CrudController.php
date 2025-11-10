@@ -38,11 +38,18 @@ class CrudController extends Controller
     // 글 작성, 수정 페이지
     public function form($id = null, Request $request)
     {
+        // 로그인 되어있는지 확인
+        if (!auth()->check()) {
+            // crud index에 파라미터 같이 넘기기
+            return redirect()->route('crud.index', $request->only(['q', 'per', 'page']))->with('error', '로그인 후 이용 가능합니다.');
+        }
+
         $data = null;
         if ($id) {
             $data = CrudModel::find($id);
             if (!$data) {
-                return redirect()->route('crud.index')->with('error', '데이터가 존재하지 않습니다.');
+                // return redirect()->route('crud.index')->with('error', '데이터가 존재하지 않습니다.');
+                return redirect()->route('crud.index', $request->only(['q', 'per', 'page']))->with('error', '데이터가 존재하지 않습니다.');
             }
         }
 

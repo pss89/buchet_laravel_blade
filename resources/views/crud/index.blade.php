@@ -8,6 +8,13 @@
         Crud 테스트 페이지
     </h1>
     <div class="mt-6 overflow-x-auto">
+        {{-- 에러 메시지 --}}
+        {{-- 오류 플래시 메시지 --}}
+        @if (session('error'))
+            <div class="mb-4 rounded-md bg-red-100 border border-red-400 text-red-700 px-4 py-3 text-sm">
+                {{ session('error') }}
+            </div>
+        @endif
         <div class="inline-block min-w-full align-middle">
             <div class="overflow-hidden rounded-lg border border-gray-200 shadow-sm">
                 <table class="min-w-full divide-y divide-gray-200 text-sm">
