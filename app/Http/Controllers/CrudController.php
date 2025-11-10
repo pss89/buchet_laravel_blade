@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\CrudModel;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class CrudController extends Controller
 {
     //
@@ -39,7 +41,16 @@ class CrudController extends Controller
     public function form($id = null, Request $request)
     {
         // 로그인 되어있는지 확인
-        if (!auth()->check()) {
+        // if (!auth()->check()) {
+
+        // if (!Auth::check()) {
+
+        /** @var \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard $guard */
+        // $guard = auth();
+
+        // if (!$guard->check()) {
+
+        if (!Auth::check()) {
             // crud index에 파라미터 같이 넘기기
             return redirect()->route('crud.index', $request->only(['q', 'per', 'page']))->with('error', '로그인 후 이용 가능합니다.');
         }
