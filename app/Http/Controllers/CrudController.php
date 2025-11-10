@@ -36,7 +36,7 @@ class CrudController extends Controller
     }
 
     // 글 작성, 수정 페이지
-    public function form($id = null)
+    public function form($id = null, Request $request)
     {
         $data = null;
         if ($id) {
@@ -46,6 +46,8 @@ class CrudController extends Controller
             }
         }
 
-        return view('crud.form', compact('data'));
+        $params = $request->only(['q', 'per', 'page']);
+
+        return view('crud.form', compact('data', 'params'));
     }
 }

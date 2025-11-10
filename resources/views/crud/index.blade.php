@@ -35,7 +35,13 @@
                         @forelse ($lists as $list)
                             {{-- route 처리하기 --}}
                             {{-- <tr class="hover:bg-gray-50"> --}}
-                            <tr onclick="location.href='{{ route('crud.form', ['id' => $list->id]) }}'" class="hover:bg-gray-50 cursor-pointer">
+                            {{-- 
+                                $q = trim($request->input('q', ''));
+                                $per = trim($request->input('per', '10'));
+                                그리고 page 정보 같이 넘기고 받기위한 처리
+                            --}}
+                            {{-- <tr onclick="location.href='{{ route('crud.form', ['id' => $list->id]) }}'" class="hover:bg-gray-50 cursor-pointer"> --}}
+                            <tr onclick="location.href='{{ route('crud.form', array_merge(['id' => $list->id], request()->only(['q', 'per', 'page'])) ) }}'" class="hover:bg-gray-50 cursor-pointer">
                                 <td class="px-4 py-3 whitespace-nowrap text-gray-900">
                                     {{ $list->id }}
                                 </td>

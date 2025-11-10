@@ -6,6 +6,12 @@
 <div class="md:container m-auto h-screen text-center content-center">
     <h1 class="text-3xl font-bold underline">
         Crud 폼 페이지 - {{ isset($data) ? '수정' : '작성' }}
+
+        {{-- <button>
+            <a href="{{ route('crud.index', $params ?? []) }}" class="ml-4 text-sm text-gray-700 underline">
+                목록으로
+            </a>
+        </button> --}}
     </h1>
 
     <div class="max-w-3xl mx-auto py-8">
